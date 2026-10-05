@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaik Gouse Basha | Software Developer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #080808;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #ff6b35;
+        }
+
+        .navbar nav {
+            display: flex;
+            gap: 35px;
+        }
+
+        .navbar nav a {
+            color: #aaa;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .navbar nav a:hover,
+        .navbar nav a.active {
+            color: #ff6b35;
+        }
+
+        .nav-btn {
+            padding: 11px 22px;
+            border: 1px solid #ff6b35;
+            color: #ff6b35;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #ff6b35;
+            color: white;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 120px 10% 60px;
+            position: relative;
+            background: radial-gradient(circle at 80% 50%, #25201c 0%, #080808 45%);
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .profile img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #ff6b35;
+        }
+
+        .profile .content h2 {
+            font-size: 24px;
+            color: #aaa;
+            margin-top: 0;
+        }
+
+        .profile .content h3 {
+            font-size: 32px;
+            color: #ff6b35;
+        }
+
+        .profile .content p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .hero h2 {
+            margin-top: 15px;
+            font-size: 28px;
+            color: #ddd;
+        }
+
+        .hero-text {
+            margin-top: 20px;
+            max-width: 600px;
+            color: #999;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .primary-btn {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .secondary-btn {
+            border: 1px solid #555;
+            color: white;
+        }
+
+        .secondary-btn:hover {
+            border-color: #ff6b35;
+            color: #ff6b35;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 25px;
+            margin-top: 35px;
+            color: #888;
+        }
+
+        .social-links a:hover {
+            color: #ff6b35;
+        }
+
+        /* SECTION COMMON */
+        .section {
+            padding: 120px 10%;
+        }
+
+        .section-title {
+            margin-bottom: 70px;
+        }
+
+        .section-title p {
+            color: #ff6b35;
+            letter-spacing: 4px;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(35px, 5vw, 60px);
+            line-height: 1.1;
+        }
+
+        .section-title h2 span {
+            color: #ff6b35;
+        }
+
+        /* ABOUT */
+        .about {
+            background: #0d0d0d;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .about-content h3 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .about-content > p {
+            color: #999;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .about-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .about-details div {
+            border-left: 2px solid #ff6b35;
+            padding-left: 15px;
+        }
+
+        .about-details strong {
+            display: block;
+            color: #777;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .about-details span {
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            padding: 35px;
+            border: 1px solid #262626;
+            background: #0d0d0d;
+            min-height: 220px;
+            transition: 0.4s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: #ff6b35;
+        }
+
+        .skill-number {
+            color: #ff6b35;
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+
+        .skill-card h3 {
+            font-size: 23px;
+            margin-bottom: 15px;
+        }
+
+        .skill-card p {
+            color: #888;
+            line-height: 1.7;
+        }
+
+        /* PROJECTS */
+        .projects {
+            background: #0d0d0d;
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .project-card {
+            min-height: 480px;
+            padding: 45px;
+            position: relative;
+            background: linear-gradient(145deg, #171717, #0b0b0b);
+            border: 1px solid #282828;
+            transition: 0.4s;
+        }
+
+        .project-card:hover {
+            border-color: #ff6b35;
+            transform: translateY(-8px);
+        }
+
+        .project-number {
+            position: absolute;
+            right: 35px;
+            top: 30px;
+            font-size: 70px;
+            font-weight: 800;
+            color: #222;
+        }
+
+        .project-category {
+            color: #ff6b35;
+            letter-spacing: 3px;
+            font-size: 11px;
+        }
+
+        .project-content h3 {
+            font-size: 38px;
+            margin-top: 25px;
+        }
+
+        .project-content > p {
+            color: #aaa;
+            margin-top: 10px;
+        }
+
+        .project-description {
+            margin-top: 35px;
+        }
+
+        .project-description p {
+            color: #888;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .technologies span {
+            padding: 8px 14px;
+            border: 1px solid #333;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #aaa;
+        }
+
+        /* EDUCATION */
+        .timeline {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            position: relative;
+            padding-bottom: 60px;
+            padding-left: 40px;
+            border-left: 1px solid #333;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: #ff6b35;
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            box-shadow: 0 0 20px #ff6b35;
+        }
+
+        .timeline-year {
+            color: #ff6b35;
+            font-weight: 600;
+        }
+
+        .timeline-content h3 {
+            font-size: 25px;
+        }
+
+        .timeline-content h4 {
+            color: #aaa;
+            margin: 8px 0 15px;
+        }
+
+        .timeline-content p {
+            color: #777;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content strong {
+            color: #ff6b35;
+        }
+
+        /* ACHIEVEMENTS */
+        .achievements {
+            background: #0d0d0d;
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .achievement-card {
+            padding: 40px;
+            border: 1px solid #282828;
+            min-height: 250px;
+            transition: 0.3s;
+        }
+
+        .achievement-card:hover {
+            border-color: #ff6b35;
+        }
+
+        .achievement-card > span {
+            color: #ff6b35;
+        }
+
+        .achievement-card h3 {
+            margin-top: 35px;
+            font-size: 22px;
+        }
+
+        .achievement-card p {
+            color: #aaa;
+            margin-top: 10px;
+        }
+
+        .achievement-card small {
+            display: block;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        /* CONTACT */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-info h3 {
+            font-size: 35px;
+        }
+
+        .contact-info > p {
+            color: #888;
+            line-height: 1.8;
+            margin: 20px 0 40px;
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+        }
+
+        .contact-item span {
+            display: block;
+            color: #555;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .contact-item a {
+            color: #ddd;
+        }
+
+        .contact-item a:hover {
+            color: #ff6b35;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 18px;
+            background: #111;
+            border: 1px solid #292929;
+            color: white;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #ff6b35;
+        }
+
+        .contact-form button {
+            padding: 16px;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #e85a29;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 10%;
+            border-top: 1px solid #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #666;
+        }
+
+        footer div:last-child {
+            display: flex;
+            gap: 20px;
+        }
+
+        footer a:hover {
+            color: #ff6b35;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .navbar nav {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 50px;
+            }
+
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid,
+            .achievement-grid,
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .nav-btn {
+                display: none;
+            }
+
+            .section {
+                padding: 80px 6%;
+            }
+
+            .hero {
+                padding: 120px 6% 60px;
+            }
+
+            .profile {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .about-details {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">
+            <span>PORTFOLIO</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <a href="#contact" class="nav-btn">Hire Me</a>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="profile">
+                <img src="./Images/Gouse_img.png" alt="Shaik Gouse Basha">
+                <div class="content">
+                    <h2>Hello, I'm</h2>
+                    <h3>Shaik Gouse Basha</h3>
+                    <p>Welcome to my portfolio</p>
+                </div>
+            </div>
+
+            <h2>Software Developer</h2>
+
+            <p class="hero-text">
+                Computer Science and Engineering graduate passionate about Full Stack Development, Python, and Artificial Intelligence.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="primary-btn">View Projects</a>
+                <a href="#contact" class="secondary-btn">Contact Me</a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/Gousebasha49" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/shaik-gouse-basha-551436n" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+        <div class="section-title">
+            <p>ABOUT ME</p>
+            <h2>Building Ideas Into <span>Software</span></h2>
+        </div>
+
+        <div class="about-container">
+            <div class="about-content">
+                <h3>Software Developer</h3>
+                <p>
+                    I am a Computer Science and Engineering graduate with a strong foundation in full-stack development and AI tools.
+                </p>
+                <p>
+                    I enjoy solving problems, learning new technologies, and developing practical software solutions.
+                </p>
+
+                <div class="about-details">
+                    <div>
+                        <strong>Degree</strong>
+                        <span>B.Tech CSE</span>
+                    </div>
+                    <div>
+                        <strong>CGPA</strong>
+                        <span>7.41</span>
+                    </div>
+                    <div>
+                        <strong>Location</strong>
+                        <span>Andhra Pradesh</span>
+                    </div>
+                    <div>
+                        <strong>Role</strong>
+                        <span>Software Developer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section skills">
+        <div class="section-title">
+            <p>MY SKILLS</p>
+            <h2>Technical <span>Skills</span></h2>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-number">1</div>
+                <h3>Python</h3>
+                <p>Programming, problem solving and application development.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-number">2</div>
+                <h3>C</h3>
+                <p>Programming fundamentals and logical problem solving.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-number">3</div>
+                <h3>HTML & CSS</h3>
+                <p>Creating responsive and structured web interfaces.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-number">4</div>
+                <h3>Oracle SQL</h3>
+                <p>Database queries and data management.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-number">5</div>
+                <h3>GitHub</h3>
+                <p>Source code management and project collaboration.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-number">6</div>
+                <h3>VS Code</h3>
+                <p>Development environment for building applications.</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-number">7</div>
+                <h3>Java</h3>
+                <p>Programming, problem solving and application development.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section projects">
+        <div class="section-title">
+            <p>MY WORK</p>
+            <h2>Featured <span>Projects</span></h2>
+        </div>
+
+        <div class="projects-container">
+            <!-- PROJECT 1 -->
+            <div class="project-card">
+                <div class="project-number">01</div>
+                <div class="project-content">
+                    <p class="project-category">FULL STACK DEVELOPMENT</p>
+                    <h3>Resolve Now</h3>
+                    <p>Your Platform for Online Complaints</p>
+                    <div class="project-description">
+                        <p>Developed a full-stack complaint registration and management system enabling customers to raise, track, and resolve complaints online.</p>
+                        <p>Implemented role-based dashboards for Customers, Agents, and Admins to streamline complaint handling.</p>
+                    </div>
+                    <div class="technologies">
+                        <span>Full Stack</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>SQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT 2 -->
+            <div class="project-card">
+                <div class="project-number">02</div>
+                <div class="project-content">
+                    <p class="project-category">MACHINE LEARNING</p>
+                    <h3>Online Payments Fraud Detection</h3>
+                    <p>Machine Learning Based Fraud Detection</p>
+                    <div class="project-description">
+                        <p>Built a machine learning model to detect fraudulent online payment transactions.</p>
+                        <p>Applied classification algorithms for identifying potentially fraudulent transactions.</p>
+                    </div>
+                    <div class="technologies">
+                        <span>Python</span>
+                        <span>Machine Learning</span>
+                        <span>Classification</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section education">
+        <div class="section-title">
+            <p>MY JOURNEY</p>
+            <h2>My <span>Education</span></h2>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">2022 - 2026</div>
+                <div class="timeline-content">
+                    <h3>Bachelor of Technology</h3>
+                    <h4>Computer Science and Engineering</h4>
+                    <p>Rise Krishna Sai Gandhi Group of Institutions, Valluru, Andhra Pradesh</p>
+                    <strong>CGPA: 7.41</strong>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">2020 - 2022</div>
+                <div class="timeline-content">
+                    <h3>Intermediate</h3>
+                    <h4>MPC</h4>
+                    <p>A.R.C and G.V.R Govt Jr. College, Singarayakonda, Andhra Pradesh</p>
+                    <strong>Percentage: 56.8%</strong>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">2019 - 2020</div>
+                <div class="timeline-content">
+                    <h3>Secondary School</h3>
+                    <h4>SSLC</h4>
+                    <p>Sri Vivekananda High School, Singarayakonda, Andhra Pradesh</p>
+                    <strong>Percentage: 85.7%</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="section achievements">
+        <div class="section-title">
+            <p>CERTIFICATIONS</p>
+            <h2>Learning & <span>Achievements</span></h2>
+        </div>
+
+        <div class="achievement-grid">
+            <div class="achievement-card">
+                <span>01</span>
+                <h3>Full Stack Development</h3>
+                <p>MERN</p>
+                <small>Smart Bridge</small>
+            </div>
+
+            <div class="achievement-card">
+                <span>02</span>
+                <h3>Artificial and Machine Learning</h3>
+                <p>AI & ML</p>
+                <small>Smart Bridge</small>
+            </div>
+
+            <div class="achievement-card">
+                <span>03</span>
+                <h3>Joy of Computing Using Python</h3>
+                <p>NPTEL Course</p>
+                <small>NPTEL</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+        <div class="section-title">
+            <p>GET IN TOUCH</p>
+            <h2>Let's Work <span>Together</span></h2>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Have a project in mind?</h3>
+                <p>I'm interested in software development, full-stack development, and AI-related opportunities.</p>
+
+                <div class="contact-item">
+                    <span>Email</span>
+                    <a href="mailto:bashagousebasha59@gmail.com">bashagousebasha59@gmail.com</a>
+                </div>
+
+                <div class="contact-item">
+                    <span>Phone</span>
+                    <a href="tel:+919392506957">+91 9392506957</a>
+                </div>
+
+                <div class="contact-item">
+                    <span>GitHub</span>
+                    <a href="https://github.com/Gousebasha49" target="_blank">github.com/Gousebasha49</a>
+                </div>
+
+                <div class="contact-item">
+                    <span>LinkedIn</span>
+                    <a href="https://www.linkedin.com/in/shaik-gouse-basha-551436n" target="_blank">LinkedIn Profile</a>
+                </div>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="6" placeholder="Your Message" required></textarea>
+                <button type="submit">SEND MESSAGE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="logo">
+            <span>PORTFOLIO</span>
+        </div>
+        <p>© 2026 Shaik Gouse Basha. All Rights Reserved.</p>
+        <div>
+            <a href="https://github.com/Gousebasha49" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/shaik-gouse-basha-551436n" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Contact form submission
+        const form = document.getElementById("contactForm");
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            alert("Thank you for contacting me!");
+            form.reset();
+        });
+
+        // Navbar active link toggle
+        const navLinks = document.querySelectorAll(".navbar nav a");
+        navLinks.forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.forEach(function (item) {
+                    item.classList.remove("active");
+                });
+                this.classList.add("active");
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
